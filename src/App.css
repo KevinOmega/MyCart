@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.screen {
+  min-height: 100vh;
+}
+.internal-sections{
+  min-height: 100vh;
+}
