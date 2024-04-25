@@ -1,39 +1,39 @@
 import React from 'react';
 
-const Cart = () => {
-    return (
+const Cart = ({ cart, addToCart }) => {
+  // Función para calcular el total de la compra
+  const calculateTotal = () => {
+    return cart.reduce((total, product) => total + product.price, 0);
+  };
+
+  return (
+    <div>
+      <div className="container">
+        <h2>Carrito de Compras</h2>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cart.map((product, index) => (
+              <tr key={index}>
+                <td>{product.title}</td>
+                <td>${product.price}</td>
+                <td><img src={product.image} alt={product.title} style={{ width: '50px' }} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div>
-             <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <h2>Primera fila</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod enim at turpis efficitur, sed consequat velit placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        </div>
-        <div className="col-md-6">
-          <img src="https://via.placeholder.com/150" alt="Placeholder" />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
-          <h2>Segunda fila</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod enim at turpis efficitur, sed consequat velit placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        </div>
-        <div className="col-md-6">
-          <img src="https://via.placeholder.com/150" alt="Placeholder" />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
-          <h2>Tercera fila</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod enim at turpis efficitur, sed consequat velit placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        </div>
-        <div className="col-md-6">
-          <img src="https://via.placeholder.com/150" alt="Placeholder" />
+          <h4>Total: ${calculateTotal()}</h4>
         </div>
       </div>
     </div>
-        </div>
-    )
+  )
 }
 
 export default Cart;
