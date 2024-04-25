@@ -10,13 +10,13 @@ import Pricing from './componentes/Pricing';
 import Cart from './componentes/Cart';
 
 function App() {
-  const [cart, addToCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
   return (
     <Router>
     <div className="App">
       <Header/>
-      <Screen cart={cart} addToCart={addToCart}>
+      <Screen cart={cart} setCart={setCart}>
       <Routes>
       <Route path="/home" element={<Home />} />
             <Route path="/features" element={<Features />} />

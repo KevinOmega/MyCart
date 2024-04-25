@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const Screen = ({ children }) => {
+const Screen = ({ children, cart, setCart }) => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')

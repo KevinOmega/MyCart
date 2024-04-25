@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({ cart, addToCart }) => {
+const Cart = ({ cart }) => {
   // Función para calcular el total de la compra
   const calculateTotal = () => {
     return cart.reduce((total, product) => total + product.price, 0);
