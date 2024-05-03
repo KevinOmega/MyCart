@@ -31,6 +31,7 @@ const Cart = ({ cart }) => {
                   <td>${item.price}</td>
                   <td>
                     <img src={item.image} alt={item.title} style={{width: 50}} />
+                    <p>{item.quantity} units</p>
                   </td>
                 </tr>
               );
