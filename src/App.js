@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './componentes/Header';
 import Screen from './componentes/Screen';
@@ -11,6 +11,20 @@ import Cart from './componentes/Cart';
 
 function App() {
   const [cart, setCart] = useState({});
+
+
+  useEffect(() => {
+    setCart(JSON.parse(window.localStorage.getItem("cart")));
+  }, []);
+
+  useEffect(() => {
+    if(Object.keys(cart).length){
+      console.log(cart);
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    } 
+    
+  }, [cart]);
+
 
   return (
     <Router>
