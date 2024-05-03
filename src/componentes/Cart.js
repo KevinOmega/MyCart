@@ -35,6 +35,7 @@ const Cart = ({ cart,setCart }) => {
   const handleRemove = (id) => {
     setCart((prevCart) => {
       const {[id]: _,...newCart} = prevCart
+      window.localStorage.setItem("cart",JSON.stringify(newCart));
       return newCart
     })
   }

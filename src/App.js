@@ -19,7 +19,6 @@ function App() {
 
   useEffect(() => {
     if(Object.keys(cart).length){
-      console.log(cart);
       window.localStorage.setItem("cart", JSON.stringify(cart));
     } 
     
