@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdDelete } from "react-icons/md";
+
 
 const Cart = ({ cart,setCart }) => {
   // Función para calcular el total de la compra
@@ -20,7 +22,7 @@ const Cart = ({ cart,setCart }) => {
     }));
   };
 
-  const handleDelete = (id) => {
+  const handleReduce = (id) => {
     setCart((prevCart) => ({
       ...prevCart,
       [id]: {
@@ -29,6 +31,13 @@ const Cart = ({ cart,setCart }) => {
       },
     }));
   };
+
+  const handleRemove = (id) => {
+    setCart((prevCart) => {
+      const {[id]: _,...newCart} = prevCart
+      return newCart
+    })
+  }
 
   return (
     <div>
@@ -49,13 +58,16 @@ const Cart = ({ cart,setCart }) => {
                 <tr key={itemId}>
                   <td>{item.title}</td>
                   <td>${item.price}</td>
-                  <td>
+                  <td className='position-relative'>
                     <img src={item.image} alt={item.title} style={{width: 50}} />
                     <p>{item.quantity} units</p>
                     <div className='btns d-flex justify-content-center'>
                       <button className="btn btn-light me-2"onClick={() => handleAdd(item.id)}>+</button>
-                      <button className="btn btn-light ms-2"onClick={() => handleDelete(item.id)}>-</button>
+                      <button className="btn btn-light ms-2"onClick={() => handleReduce(item.id)}>-</button>
                     </div>
+                    <i className='position-absolute top-0 end-0 text-danger me-2'
+                    onClick={() => handleRemove(item.id)}
+                    ><MdDelete/></i>
                   </td>
                 </tr>
               );
