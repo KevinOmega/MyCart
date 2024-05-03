@@ -10,7 +10,7 @@ import Pricing from './componentes/Pricing';
 import Cart from './componentes/Cart';
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
 
   return (
     <Router>

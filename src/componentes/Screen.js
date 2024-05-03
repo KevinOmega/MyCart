@@ -16,7 +16,13 @@ const Screen = ({ children, cart, setCart }) => {
   }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    setCart((prevCart) => ({
+      ...prevCart,
+      [product.id]: {
+        ...product,
+        quantity: (prevCart[product.id]?.quantity || 0) + 1,
+      },
+    }));
   };
 
   return (

@@ -3,7 +3,11 @@ import React from 'react';
 const Cart = ({ cart }) => {
   // Función para calcular el total de la compra
   const calculateTotal = () => {
-    return cart.reduce((total, product) => total + product.price, 0);
+    let total = 0;
+    for (const item in cart) {
+      total += cart[item].price * cart[item].quantity;
+    }
+    return total;
   };
 
   return (
@@ -19,13 +23,18 @@ const Cart = ({ cart }) => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((product, index) => (
-              <tr key={index}>
-                <td>{product.title}</td>
-                <td>${product.price}</td>
-                <td><img src={product.image} alt={product.title} style={{ width: '50px' }} /></td>
-              </tr>
-            ))}
+          {Object.keys(cart).map((itemId) => {
+              const item = cart[itemId];
+              return (
+                <tr key={itemId}>
+                  <td>{item.title}</td>
+                  <td>${item.price}</td>
+                  <td>
+                    <img src={item.image} alt={item.title} style={{width: 50}} />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <div>
