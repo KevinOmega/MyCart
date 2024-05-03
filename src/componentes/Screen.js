@@ -25,6 +25,8 @@ const Screen = ({ children, cart, setCart }) => {
     }));
   };
 
+  
+
   return (
     <div>
     <div className='screen'>
